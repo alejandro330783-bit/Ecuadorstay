@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcuadorStay — Tu lugar perfecto en Ecuador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#">
+      <span class="logo-mark">◆</span>
+      <span><strong>Ecuador<span>Stay</span></strong><small>Tu lugar perfecto en Ecuador</small></span>
+    </a>
+
+    <nav>
+      <a href="#explorar">Explorar</a>
+      <a href="#alojamientos">Alojamientos</a>
+      <a href="#escapadas">Escapadas</a>
+      <a href="#anfitriones">Anfitriones</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Favoritos">♡</button>
+      <button class="outline-btn">Iniciar sesión</button>
+      <button class="primary-btn">Publica tu alojamiento</button>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="explorar">
+      <div class="hero-content">
+        <p class="eyebrow">🇪🇨 DESCUBRE ECUADOR</p>
+        <h1>Encuentra tu lugar<br>perfecto en Ecuador</h1>
+        <p class="hero-subtitle">Casas, cabañas y departamentos increíbles para tus mejores momentos.</p>
+
+        <div class="search-box">
+          <label>
+            <span>¿A dónde vas?</span>
+            <input id="destination" type="text" placeholder="Ej: Montañita, Baños, Cuenca...">
+          </label>
+          <label>
+            <span>Check-in</span>
+            <input type="date">
+          </label>
+          <label>
+            <span>Check-out</span>
+            <input type="date">
+          </label>
+          <label>
+            <span>Huéspedes</span>
+            <input id="guests" type="number" min="1" placeholder="¿Cuántos?">
+          </label>
+          <button class="search-btn" onclick="searchStay()">⌕ &nbsp; Buscar</button>
+        </div>
+
+        <div class="quick-filters">
+          <button onclick="setFilter('Piscina')">🏊 Piscina</button>
+          <button onclick="setFilter('Frente al mar')">🌊 Frente al mar</button>
+          <button onclick="setFilter('Mascotas')">🐾 Mascotas</button>
+          <button onclick="setFilter('Familias')">👨‍👩‍👧 Para familias</button>
+          <button onclick="setFilter('Wi-Fi')">📶 Wi-Fi rápido</button>
+          <button onclick="setFilter('económico')">💲 Menos de $50</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="escapadas">
+      <div class="section-heading">
+        <div>
+          <h2>🌴 Escapadas de este fin de semana</h2>
+          <p>Ideas perfectas para salir, relajarte y disfrutar.</p>
+        </div>
+        <a href="#">Ver todas las escapadas →</a>
+      </div>
+      <div class="category-grid">
+        <article class="category-card" onclick="setFilter('Playas')"><div class="category-img beach"></div><b>Playas</b><small>Desde $40/noche</small></article>
+        <article class="category-card" onclick="setFilter('Naturaleza')"><div class="category-img nature"></div><b>Naturaleza</b><small>Desde $35/noche</small></article>
+        <article class="category-card" onclick="setFilter('Cabañas')"><div class="category-img cabin"></div><b>Cabañas</b><small>Desde $30/noche</small></article>
+        <article class="category-card" onclick="setFilter('Parejas')"><div class="category-img couple"></div><b>Para parejas</b><small>Desde $45/noche</small></article>
+        <article class="category-card" onclick="setFilter('Familias')"><div class="category-img family"></div><b>Para familias</b><small>Desde $50/noche</small></article>
+        <article class="category-card" onclick="setFilter('económico')"><div class="category-img mountain"></div><b>Menos de $50</b><small>Ver opciones</small></article>
+      </div>
+    </section>
+
+    <section class="section" id="alojamientos">
+      <div class="section-heading">
+        <div>
+          <h2>⭐ Alojamientos destacados</h2>
+          <p>Los favoritos de nuestros viajeros.</p>
+        </div>
+        <a href="#">Ver todos los alojamientos →</a>
+      </div>
+
+      <div class="property-grid" id="propertyGrid">
+        <article class="property-card" data-tags="Frente al mar Piscina">
+          <div class="property-img p1"><span>Superanfitrión</span><button>♡</button></div>
+          <div class="property-info">
+            <div class="rating">★ 4.9 <small>(128)</small></div>
+            <h3>Casa Frente al Mar - Ayampe</h3>
+            <p>Ayampe, Manabí</p><small>👥 6 huéspedes &nbsp; 🛏 3 hab &nbsp; 🚿 2 baños</small>
+            <strong>$85 <em>/ noche</em></strong>
+          </div>
+        </article>
+
+        <article class="property-card" data-tags="Naturaleza Cabañas">
+          <div class="property-img p2"><span>Superanfitrión</span><button>♡</button></div>
+          <div class="property-info">
+            <div class="rating">★ 4.8 <small>(96)</small></div>
+            <h3>Cabaña en Baños con vista</h3>
+            <p>Baños, Tungurahua</p><small>👥 4 huéspedes &nbsp; 🛏 2 hab &nbsp; 🚿 1 baño</small>
+            <strong>$45 <em>/ noche</em></strong>
+          </div>
+        </article>
+
+        <article class="property-card" data-tags="Wi-Fi Familias">
+          <div class="property-img p3"><span>Nuevo</span><button>♡</button></div>
+          <div class="property-info">
+            <div class="rating">★ 4.7 <small>(73)</small></div>
+            <h3>Departamento Moderno - Cuenca</h3>
+            <p>Cuenca, Azuay</p><small>👥 5 huéspedes &nbsp; 🛏 2 hab &nbsp; 🚿 2 baños</small>
+            <strong>$55 <em>/ noche</em></strong>
+          </div>
+        </article>
+
+        <article class="property-card" data-tags="Frente al mar Piscina Familias">
+          <div class="property-img p4"><span>Superanfitrión</span><button>♡</button></div>
+          <div class="property-info">
+            <div class="rating">★ 4.9 <small>(150)</small></div>
+            <h3>Casa en Montañita</h3>
+            <p>Montañita, Santa Elena</p><small>👥 8 huéspedes &nbsp; 🛏 4 hab &nbsp; 🚿 2 baños</small>
+            <strong>$95 <em>/ noche</em></strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div><b>🛡️ Reservas seguras</b><small>Tu seguridad es nuestra prioridad.</small></div>
+      <div><b>🎧 Soporte 24/7</b><small>Estamos aquí cuando nos necesites.</small></div>
+      <div><b>📅 Cancelación flexible</b><small>Cambia de planes sin preocupaciones.</small></div>
+      <div><b>🏷️ Mejores precios</b><small>Encuentra opciones para tu estilo.</small></div>
+    </section>
+
+    <section class="cta" id="anfitriones">
+      <div>
+        <p class="eyebrow">¿TIENES UN ALOJAMIENTO?</p>
+        <h2>Convierte tu espacio en una nueva oportunidad.</h2>
+        <p>Publica tu alojamiento y llega a viajeros que quieren conocer Ecuador.</p>
+      </div>
+      <button class="primary-btn">Publicar mi alojamiento →</button>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div><strong>Ecuador<span>Stay</span></strong><p>Tu lugar perfecto en Ecuador.</p></div>
+    <div><b>Explorar</b><a href="#">Destinos</a><a href="#">Alojamientos</a><a href="#">Escapadas</a></div>
+    <div><b>Ayuda</b><a href="#">Preguntas frecuentes</a><a href="#">Contacto</a><a href="#">Términos</a></div>
+    <div><b>Síguenos</b><p>Instagram · TikTok · Facebook</p></div>
+  </footer>
+
+  <div class="mobile-nav">
+    <a href="#">⌂<small>Inicio</small></a>
+    <a href="#explorar">⌕<small>Explorar</small></a>
+    <a href="#">♡<small>Favoritos</small></a>
+    <a href="#">▣<small>Mis viajes</small></a>
+    <a href="#">●<small>Perfil</small></a>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
