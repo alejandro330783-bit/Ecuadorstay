@@ -24,8 +24,12 @@
 
     <div class="nav-actions">
       <button class="icon-btn" aria-label="Favoritos">♡</button>
-      <button class="outline-btn">Iniciar sesión</button>
-      <button class="primary-btn">Publica tu alojamiento</button>
+      <button class="outline-btn" onclick="netlifyIdentity.open('login')">
+    Iniciar sesión
+</button>
+<button class="primary-btn" onclick="netlifyIdentity.open('signup')">
+    Crear cuenta
+</button>
     </div>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </header>
@@ -172,5 +176,6 @@
 
   <div id="toast" class="toast"></div>
   <script src="script.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </body>
 </html>
