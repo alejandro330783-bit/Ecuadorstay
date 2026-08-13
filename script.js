@@ -43,3 +43,107 @@ document.querySelectorAll(".property-img button").forEach(btn=>{
     showToast(btn.textContent==="♥"?"❤️ Añadido a favoritos":"Eliminado de favoritos");
   });
 });
+// ===============================
+// ECUADORSTAY - SESIÓN DE USUARIO
+// ===============================
+
+function updateUserInterface(user) {
+  const navActions = document.querySelector(".nav-actions");
+
+  if (!navActions) return;
+
+  if (user) {
+    const name =
+      user.user_metadata?.full_name ||
+      user.email?.split("@")[0] ||
+      "Usuario";
+
+    const avatar =
+      user.user_metadata?.avatar_url ||
+      `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=087f69&color=fff`;
+
+    navActions.innerHTML = `
+      <div class="user-profile">
+        <button class="profile-button" onclick="toggleProfileMenu()">
+          <img src="${avatar}" alt="Foto de perfil">
+          <span>${name}</span>
+          <span class="profile-arrow">⌄</span>
+        </button>
+
+        <div id="profileMenu" class="profile-menu">
+          <div class="profile-menu-header">
+            <strong>${name}</strong>
+            <small>${user.email || ""}</small>
+          </div>
+
+          <button onclick="showToast('👤 Mi perfil próximamente')">
+            👤 Mi perfil
+          </button>
+
+          <button onclick="showToast('🏠 Mis alojamientos próximamente')">
+            🏠 Mis alojamientos
+          </button>
+
+          <button onclick="showToast('❤️ Tus favoritos próximamente')">
+            ❤️ Favoritos
+          </button>
+
+          <button onclick="showToast('📅 Tus reservas próximamente')">
+            📅 Mis reservas
+          </button>
+
+          <button onclick="showToast('⚙️ Configuración próximamente')">
+            ⚙️ Configuración
+          </button>
+
+          <button onclick="logoutUser()" class="logout-button">
+            🚪 Cerrar sesión
+          </button>
+        </div>
+      </div>
+    `;
+  } else {
+    navActions.innerHTML = `
+      <button class="icon-btn" aria-label="Favoritos">♡</button>
+
+      <button class="outline-btn" onclick="netlifyIdentity.open('login')">
+        Iniciar sesión
+      </button>
+
+      <button class="primary-btn" onclick="netlifyIdentity.open('signup')">
+        Crear cuenta
+      </button>
+    `;
+  }
+}
+
+function toggleProfileMenu() {
+  const menu = document.getElementById("profileMenu");
+
+  if (menu) {
+    menu.classList.toggle("show");
+  }
+}
+
+function logoutUser() {
+  netlifyIdentity.logout();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof netlifyIdentity === "undefined") return;
+
+  netlifyIdentity.on("init", user => {
+    updateUserInterface(user);
+  });
+
+  netlifyIdentity.on("login", user => {
+    updateUserInterface(user);
+    showToast("👋 ¡Bienvenido a EcuadorStay!");
+    netlifyIdentity.close();
+  });
+
+  netlifyIdentity.on("logout", () => {
+    updateUserInterface(null);
+    showToast("👋 Sesión cerrada correctamente.");
+  });
+});
