@@ -422,3 +422,93 @@
     padding: 20px;
   }
 }
+/* ===============================
+   ECUADORSTAY - MODO OSCURO
+   =============================== */
+
+body.dark-mode {
+  background: #111918;
+  color: #edf5f2;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .profile-card,
+body.dark-mode .property-card,
+body.dark-mode .profile-button,
+body.dark-mode .profile-menu,
+body.dark-mode .search-box,
+body.dark-mode .mobile-nav {
+  background: #182220;
+  color: #edf5f2;
+}
+
+body.dark-mode .navbar {
+  border-bottom-color: #2a3633;
+}
+
+body.dark-mode .navbar nav a,
+body.dark-mode .section-heading a,
+body.dark-mode .profile-button,
+body.dark-mode .profile-menu button,
+body.dark-mode .property-info h3,
+body.dark-mode .profile-card h2,
+body.dark-mode .profile-field strong {
+  color: #edf5f2;
+}
+
+body.dark-mode .section-heading p,
+body.dark-mode .property-info p,
+body.dark-mode .property-info > small,
+body.dark-mode .profile-field small,
+body.dark-mode .profile-options button small,
+body.dark-mode .profile-header p:last-child {
+  color: #aebdb8;
+}
+
+body.dark-mode .section {
+  background: #111918;
+}
+
+body.dark-mode .benefits {
+  background: #1a2925;
+}
+
+body.dark-mode .benefits div {
+  border-color: #30403b;
+}
+
+body.dark-mode .cta {
+  background: #19312b;
+}
+
+body.dark-mode footer {
+  background: #0b1513;
+}
+
+body.dark-mode .outline-btn {
+  background: #182220;
+  border-color: #3a4844;
+  color: #edf5f2;
+}
+
+body.dark-mode .profile-menu-header,
+body.dark-mode .profile-field {
+  border-color: #2d3936;
+}
+
+body.dark-mode .profile-options button:hover,
+body.dark-mode .profile-menu button:hover {
+  background: #22332e;
+}
+
+body.dark-mode .edit-profile-form input,
+body.dark-mode .edit-profile-form textarea {
+  background: #1d2926;
+  color: #edf5f2;
+  border-color: #3a4844;
+}
+
+body.dark-mode .edit-profile-form input::placeholder,
+body.dark-mode .edit-profile-form textarea::placeholder {
+  color: #91a09b;
+}
