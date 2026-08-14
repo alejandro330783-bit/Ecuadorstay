@@ -76,9 +76,9 @@ function updateUserInterface(user) {
             <small>${user.email || ""}</small>
           </div>
 
-          <button onclick="showToast('👤 Mi perfil próximamente')">
-            👤 Mi perfil
-          </button>
+         <button onclick="showProfile()">
+  👤 Mi perfil
+</button>
 
           <button onclick="showToast('🏠 Mis alojamientos próximamente')">
             🏠 Mis alojamientos
@@ -124,7 +124,19 @@ function toggleProfileMenu() {
     menu.classList.toggle("show");
   }
 }
+function showProfile() {
+  const profile = document.getElementById("perfil");
 
+  if (!profile) return;
+
+  profile.scrollIntoView({ behavior: "smooth" });
+
+  const menu = document.getElementById("profileMenu");
+
+  if (menu) {
+    menu.classList.remove("show");
+  }
+}
 function logoutUser() {
   netlifyIdentity.logout();
 }
