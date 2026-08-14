@@ -126,16 +126,28 @@ function toggleProfileMenu() {
 }
 function showProfile() {
   const profile = document.getElementById("perfil");
+  const main = document.querySelector("main");
 
-  if (!profile) return;
+  if (!profile || !main) return;
 
-  profile.scrollIntoView({ behavior: "smooth" });
+  const sections = main.querySelectorAll(":scope > section");
+
+  sections.forEach(section => {
+    section.style.display = "none";
+  });
+
+  profile.style.display = "block";
 
   const menu = document.getElementById("profileMenu");
 
   if (menu) {
     menu.classList.remove("show");
   }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 function logoutUser() {
   netlifyIdentity.logout();
