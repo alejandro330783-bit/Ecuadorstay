@@ -190,6 +190,21 @@ function toggleEditProfile() {
   if (!form) return;
 
   if (form.style.display === "none" || form.style.display === "") {
+    const user = netlifyIdentity.currentUser();
+
+    if (user) {
+      const name =
+        user.user_metadata?.full_name ||
+        user.email?.split("@")[0] ||
+        "";
+
+      document.getElementById("editName").value = name;
+      document.getElementById("editPhone").value =
+        user.user_metadata?.phone || "";
+      document.getElementById("editBio").value =
+        user.user_metadata?.bio || "";
+    }
+
     form.style.display = "block";
   } else {
     form.style.display = "none";
