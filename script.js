@@ -184,6 +184,21 @@ function showHome() {
     behavior: "smooth"
   });
 }
+function toggleEditProfile() {
+  const form = document.getElementById("editProfileForm");
+
+  if (!form) return;
+
+  if (form.style.display === "none" || form.style.display === "") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+}
+
+function saveProfileChanges() {
+  showToast("💾 Formulario preparado. El guardado real lo conectaremos en el siguiente paso.");
+}
 function logoutUser() {
   netlifyIdentity.logout();
 }
