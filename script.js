@@ -278,3 +278,20 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast("👋 Sesión cerrada correctamente.");
   });
 });
+function toggleDarkMode() {
+  const enabled = document.body.classList.toggle("dark-mode");
+
+  const text = document.getElementById("darkModeText");
+
+  if (text) {
+    text.textContent = enabled
+      ? "Desactivar modo oscuro"
+      : "Activar modo oscuro";
+  }
+
+  showToast(
+    enabled
+      ? "🌙 Modo oscuro activado"
+      : "☀️ Modo claro activado"
+  );
+}
