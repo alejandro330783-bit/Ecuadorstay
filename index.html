@@ -92,9 +92,32 @@
           </div>
         </div>
 
-        <button class="primary-btn profile-edit-btn">
-          ✏️ Editar perfil
-        </button>
+       <button class="primary-btn profile-edit-btn" onclick="toggleEditProfile()">
+  ✏️ Editar perfil
+</button>
+
+<div class="edit-profile-form" id="editProfileForm" style="display:none;">
+
+  <label>
+    <span>Nombre</span>
+    <input type="text" id="editName" placeholder="Tu nombre">
+  </label>
+
+  <label>
+    <span>Teléfono</span>
+    <input type="tel" id="editPhone" placeholder="Tu teléfono">
+  </label>
+
+  <label>
+    <span>Sobre mí</span>
+    <textarea id="editBio" placeholder="Cuéntanos un poco sobre ti."></textarea>
+  </label>
+
+  <button class="primary-btn" onclick="saveProfileChanges()">
+    💾 Guardar cambios
+  </button>
+
+</div>
       </div>
 
       <div class="profile-card profile-options">
