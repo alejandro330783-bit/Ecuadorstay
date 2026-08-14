@@ -61,7 +61,16 @@ function updateUserInterface(user) {
     const avatar =
       user.user_metadata?.avatar_url ||
       `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=087f69&color=fff`;
+const profileName = document.getElementById("profileName");
+const profileEmail = document.getElementById("profileEmail");
 
+if (profileName) {
+  profileName.textContent = name;
+}
+
+if (profileEmail) {
+  profileEmail.textContent = user.email || "Correo no disponible";
+}
     navActions.innerHTML = `
       <div class="user-profile">
         <button class="profile-button" onclick="toggleProfileMenu()">
