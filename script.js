@@ -71,6 +71,14 @@ if (profileName) {
 if (profileEmail) {
   profileEmail.textContent = user.email || "Correo no disponible";
 }
+    const profileAvatar = document.querySelector(".profile-avatar");
+
+if (profileAvatar) {
+  profileAvatar.innerHTML = `
+    <img src="${avatar}" alt="Foto de perfil"
+      style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
+  `;
+}
     navActions.innerHTML = `
       <div class="user-profile">
         <button class="profile-button" onclick="toggleProfileMenu()">
