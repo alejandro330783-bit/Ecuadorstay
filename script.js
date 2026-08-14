@@ -212,7 +212,49 @@ function toggleEditProfile() {
 }
 
 function saveProfileChanges() {
-  showToast("💾 Formulario preparado. El guardado real lo conectaremos en el siguiente paso.");
+  const user = netlifyIdentity.currentUser();
+
+  if (!user) {
+    showToast("⚠️ Debes iniciar sesión para guardar cambios.");
+    return;
+  }
+
+  const name = document.getElementById("editName").value.trim();
+  const phone = document.getElementById("editPhone").value.trim();
+  const bio = document.getElementById("editBio").value.trim();
+
+  user.update({
+    data: {
+      ...user.user_metadata,
+      full_name: name,
+      phone: phone,
+      bio: bio
+    }
+  })
+  .then(updatedUser => {
+    document.getElementById("profileName").textContent =
+      updatedUser.user_metadata?.full_name || name || "Usuario";
+
+    document.getElementById("profilePhone").textContent =
+      updatedUser.user_metadata?.phone || "No agregado";
+
+    document.getElementById("profileBio").textContent =
+      updatedUser.user_metadata?.bio || "Cuéntanos un poco sobre ti.";
+
+    showToast("✅ ¡Perfil actualizado!");
+
+    const form = document.getElementById("editProfileForm");
+
+    if (form) {
+      form.style.display = "none";
+    }
+
+    updateUserInterface(updatedUser);
+  })
+  .catch(error => {
+    console.error(error);
+    showToast("❌ No se pudieron guardar los cambios.");
+  });
 }
 function logoutUser() {
   netlifyIdentity.logout();
