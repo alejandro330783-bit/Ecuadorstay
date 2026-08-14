@@ -149,6 +149,24 @@ function showProfile() {
     behavior: "smooth"
   });
 }
+function showHome() {
+  const main = document.querySelector("main");
+  const sections = main.querySelectorAll(":scope > section");
+  const profile = document.getElementById("perfil");
+
+  sections.forEach(section => {
+    section.style.display = "";
+  });
+
+  if (profile) {
+    profile.style.display = "none";
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 function logoutUser() {
   netlifyIdentity.logout();
 }
