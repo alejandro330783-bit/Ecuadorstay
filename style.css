@@ -327,3 +327,98 @@
     padding: 20px;
   }
 }
+/* =========================================
+   ECUADORSTAY - MEJORA VISUAL DEL PERFIL
+   ========================================= */
+
+.profile-page {
+  background:
+    radial-gradient(circle at top left, #e7f4ef 0%, transparent 35%),
+    #f7faf8;
+}
+
+.profile-container {
+  max-width: 1120px;
+}
+
+.profile-header {
+  background: #ffffff;
+  border: 1px solid #e7eeeb;
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 25px #00000008;
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+  border: 4px solid #e7f4ef;
+}
+
+.profile-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px #0000000d;
+}
+
+.profile-field {
+  transition: background .2s ease;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 10px;
+}
+
+.profile-field:hover {
+  background: #f7faf8;
+}
+
+.profile-options button {
+  margin-bottom: 4px;
+  transition: background .2s ease, transform .15s ease;
+}
+
+.profile-options button:hover {
+  background: #f0f8f5;
+  transform: translateX(3px);
+}
+
+.profile-options button span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.profile-options button span strong {
+  color: #26332f;
+  font-size: 14px;
+}
+
+.profile-options button span small {
+  color: #7a8783;
+  font-size: 11px;
+}
+
+@media(max-width:650px) {
+  .profile-page {
+    padding: 30px 17px;
+  }
+
+  .profile-header {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .profile-header h1 {
+    font-size: 27px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+}
