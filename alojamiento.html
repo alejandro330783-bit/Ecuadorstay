@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Casa Frente al Mar - EcuadorStay</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .stay-page {
+      max-width: 1200px;
+      margin: 100px auto 60px;
+      padding: 0 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #0b7a75;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .stay-gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 250px 250px;
+      gap: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .stay-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stay-gallery img:first-child {
+      grid-row: span 2;
+    }
+
+    .stay-info {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 40px;
+      margin-top: 35px;
+    }
+
+    .stay-main h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .location {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .rating {
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 25px;
+    }
+
+    .description h2,
+    .services h2 {
+      margin-bottom: 15px;
+    }
+
+    .description p {
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .services ul {
+      padding-left: 20px;
+      line-height: 2;
+    }
+
+    .booking-box {
+      border: 1px solid #ddd;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+      height: fit-content;
+      position: sticky;
+      top: 90px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .price span {
+      font-size: 15px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    .booking-box label {
+      display: block;
+      font-weight: 600;
+      margin: 15px 0 7px;
+    }
+
+    .booking-box input,
+    .booking-box select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    .reserve-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #0b7a75;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .reserve-btn:hover {
+      opacity: .9;
+    }
+
+    .total {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+      font-weight: 700;
+    }
+
+    @media (max-width: 800px) {
+      .stay-gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px;
+      }
+
+      .stay-gallery img:first-child {
+        grid-column: span 2;
+        grid-row: auto;
+      }
+
+      .stay-info {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-box {
+        position: static;
+      }
+
+      .stay-main h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="stay-page">
+
+    <a href="index.html#alojamientos" class="back-link">
+      ← Volver a alojamientos
+    </a>
+
+    <section class="stay-gallery">
+
+      <img
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+        alt="Casa frente al mar">
+
+      <img
+        src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80"
+        alt="Interior de la casa">
+
+      <img
+        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+        alt="Sala de la casa">
+
+      <img
+        src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
+        alt="Habitación">
+
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+        alt="Exterior de la casa">
+
+    </section>
+
+
+    <section class="stay-info">
+
+      <div class="stay-main">
+
+        <h1>Casa Frente al Mar - Ayampe</h1>
+
+        <p class="location">
+          📍 Ayampe, Manabí, Ecuador
+        </p>
+
+        <p class="rating">
+          ⭐ 4.9 · 128 reseñas
+        </p>
+
+        <div class="details">
+          <span>👥 6 huéspedes</span>
+          <span>🛏️ 3 habitaciones</span>
+          <span>🛁 2 baños</span>
+          <span>🏊 Piscina</span>
+        </div>
+
+        <div class="description">
+
+          <h2>Sobre este alojamiento</h2>
+
+          <p>
+            Disfruta de una estancia inolvidable frente al mar en Ayampe.
+            Esta casa combina comodidad, tranquilidad y una ubicación
+            privilegiada para disfrutar de las playas de Manabí.
+          </p>
+
+          <p>
+            Es una excelente opción para familias y grupos que buscan
+            relajarse, disfrutar de la naturaleza y conocer la costa
+            ecuatoriana.
+          </p>
+
+        </div>
+
+        <div class="services">
+
+          <h2>Servicios</h2>
+
+          <ul>
+            <li>🌊 Acceso cercano a la playa</li>
+            <li>🏊 Piscina</li>
+            <li>📶 Wi-Fi</li>
+            <li>🚗 Estacionamiento</li>
+            <li>🍳 Cocina equipada</li>
+            <li>❄️ Aire acondicionado</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <aside class="booking-box">
+
+        <div class="price">
+          $85 <span>/ noche</span>
+        </div>
+
+        <label for="checkin">Llegada</label>
+        <input type="date" id="checkin">
+
+        <label for="checkout">Salida</label>
+        <input type="date" id="checkout">
+
+        <label for="guests">Huéspedes</label>
+
+        <select id="guests">
+          <option value="1">1 huésped</option>
+          <option value="2">2 huéspedes</option>
+          <option value="3">3 huéspedes</option>
+          <option value="4">4 huéspedes</option>
+          <option value="5">5 huéspedes</option>
+          <option value="6">6 huéspedes</option>
+        </select>
+
+        <button class="reserve-btn" onclick="reserveStay()">
+          Reservar alojamiento
+        </button>
+
+        <div class="total" id="total">
+          Selecciona tus fechas
+        </div>
+
+      </aside>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    const pricePerNight = 85;
+
+    function reserveStay() {
+
+      const checkin = document.getElementById("checkin").value;
+      const checkout = document.getElementById("checkout").value;
+
+      if (!checkin || !checkout) {
+        alert("📅 Selecciona la fecha de llegada y salida.");
+        return;
+      }
+
+      const start = new Date(checkin);
+      const end = new Date(checkout);
+
+      const difference = end - start;
+      const nights = difference / (1000 * 60 * 60 * 24);
+
+      if (nights <= 0) {
+        alert("⚠️ La fecha de salida debe ser posterior a la llegada.");
+        return;
+      }
+
+      const total = nights * pricePerNight;
+
+      document.getElementById("total").textContent =
+        `${nights} noche(s) · Total: $${total}`;
+
+      alert(
+        `✅ Solicitud de reserva preparada.\n\n` +
+        `Casa Frente al Mar - Ayampe\n` +
+        `${nights} noche(s)\n` +
+        `Total: $${total}`
+      );
+    }
+
+  </script>
+
+</body>
+</html>
