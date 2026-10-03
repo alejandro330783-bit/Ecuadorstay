@@ -5,27 +5,124 @@ function showToast(message){
   clearTimeout(window.toastTimer);
   window.toastTimer=setTimeout(()=>toast.classList.remove("show"),2500);
 }
-function searchStay(){
-  const destination=document.getElementById("destination").value.trim();
-  const guests=document.getElementById("guests").value;
-  if(!destination){
+let currentFilter = "";
+let currentSearch = "";
+
+function searchStay() {
+  const destination = document
+    .getElementById("destination")
+    .value
+    .trim()
+    .toLowerCase();
+
+  const guestsValue = document.getElementById("guests").value;
+  const guests = guestsValue ? parseInt(guestsValue) : null;
+
+  if (!destination) {
     showToast("📍 Escribe un destino para comenzar tu búsqueda.");
     document.getElementById("destination").focus();
     return;
   }
-  showToast(`🔎 Buscando alojamientos en ${destination}${guests ? ` para ${guests} huésped(es)` : ""}...`);
-  document.getElementById("alojamientos").scrollIntoView({behavior:"smooth"});
+
+  currentSearch = destination;
+
+  applyFilters();
+
+  const destinationName =
+    document.getElementById("destination").value.trim();
+
+  showToast(
+    `🔎 Buscando alojamientos en ${destinationName}` +
+    `${guests ? ` para ${guests} huésped(es)` : ""}...`
+  );
+
+  document
+    .getElementById("alojamientos")
+    .scrollIntoView({ behavior: "smooth" });
 }
-function setFilter(filter){
-  const cards=[...document.querySelectorAll(".property-card")];
-  let found=0;
-  cards.forEach(card=>{
-    const visible=filter==="económico" ? parseInt(card.querySelector("strong").textContent.replace(/\D/g,""))<50 : card.dataset.tags.includes(filter);
-    card.style.display=visible?"block":"none";
-    if(visible) found++;
+function setFilter(filter) {
+  currentFilter = filter;
+  currentSearch = "";
+
+  document.getElementById("destination").value = "";
+
+  applyFilters();
+
+  document
+    .getElementById("alojamientos")
+    .scrollIntoView({ behavior: "smooth" });
+
+  const visibleCards = [
+    ...document.querySelectorAll(".property-card")
+  ].filter(card => card.style.display !== "none");
+
+  showToast(
+    visibleCards.length
+      ? `✨ Mostrando alojamientos: ${filter}`
+      : `😅 Todavía no tenemos opciones de ${filter}.`
+  );
+}
+function applyFilters() {
+  const cards = [
+    ...document.querySelectorAll(".property-card")
+  ];
+
+  const guestsValue = document.getElementById("guests").value;
+  const guests = guestsValue ? parseInt(guestsValue) : null;
+
+  let found = 0;
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const tags = (card.dataset.tags || "").toLowerCase();
+
+    // Buscar destino
+    const matchesSearch =
+      !currentSearch || text.includes(currentSearch);
+
+    // Buscar filtro
+    let matchesFilter = true;
+
+    if (currentFilter === "económico") {
+      const priceText =
+        card.querySelector("strong")?.textContent || "";
+
+      const price =
+        parseInt(priceText.replace(/\D/g, "")) || 0;
+
+      matchesFilter = price < 50;
+    } else if (currentFilter) {
+      matchesFilter = tags.includes(currentFilter.toLowerCase());
+    }
+
+    // Comprobar cantidad de huéspedes
+    let matchesGuests = true;
+
+    if (guests) {
+      const guestMatch =
+        text.match(/(\d+)\s*huéspedes?/i);
+
+      if (guestMatch) {
+        const capacity = parseInt(guestMatch[1]);
+        matchesGuests = capacity >= guests;
+      }
+    }
+
+    const visible =
+      matchesSearch &&
+      matchesFilter &&
+      matchesGuests;
+
+    card.style.display = visible ? "" : "none";
+
+    if (visible) {
+      found++;
+    }
   });
-  showToast(found ? `✨ Mostrando alojamientos: ${filter}` : `😅 Todavía no tenemos opciones de ${filter}.`);
-  document.getElementById("alojamientos").scrollIntoView({behavior:"smooth"});
+
+  if (currentSearch && found === 0) {
+    showToast("😕 No encontramos alojamientos para esa búsqueda.");
+  }
 }
 function toggleMenu(){
   const nav=document.querySelector(".navbar nav");
